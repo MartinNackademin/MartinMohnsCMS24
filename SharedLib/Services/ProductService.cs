@@ -85,8 +85,8 @@ public class ProductService : IProductService
 
     }
 
-    public Product Update(Product updatedProduct) // use delete and add to update a product for fun, why are you returning a product?
-    {                                              // you have only completed this section everything else needs to be done, sending in correct info on button press,
+    public Product Update(Product updatedProduct) //  this is terrible
+    {                                              //
 
         foreach (Product productInList in _products)
         {

@@ -40,15 +40,16 @@ namespace SharedLib.Services
                     Debug.WriteLine("Cataegory has been set to Foods");
                     break;
 
-                default:
+                default: 
                 case "Others":
+                    product.Category = "Others";
                     _categoryOthers.Add(product);
                     Debug.WriteLine("Category was set to Others");
                     break;
             }
         }
 
-        public void printCategory()
+        public void ClearCategoryLists()
         {
             _categoryGames.Clear();
             _categoryPets.Clear();

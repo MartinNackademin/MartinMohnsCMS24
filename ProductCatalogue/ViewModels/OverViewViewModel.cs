@@ -116,7 +116,7 @@ public partial class OverViewViewModel : ObservableObject
         {
             Productlist.Add(product);
         }
-        _categoryService.printCategory();
+        _categoryService.ClearCategoryLists();
         Debug.WriteLine("Added finished , im ID 1");
     }
 }
