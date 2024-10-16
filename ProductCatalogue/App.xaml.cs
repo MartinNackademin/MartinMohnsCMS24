@@ -2,6 +2,7 @@
 using ProductCatalogue.ViewModels;
 using ProductCatalogue.Views;
 using Shared.Services;
+using SharedLib.Services;
 using System.IO;
 using System.Windows;
 
@@ -22,18 +23,22 @@ public partial class App : Application // Dependency Injection
 
         services.AddSingleton<IProductService, ProductService>();
         services.AddSingleton<IFileService>(new FileService(filePath));
+        services.AddTransient<ICategoryService, CategoryService>();
 
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<MainWindow>();
 
-        services.AddSingleton<OverViewViewModel>();
-        services.AddSingleton<OverviewView>();
+        services.AddTransient<OverViewViewModel>();
+        services.AddTransient<OverviewView>();
 
-        services.AddSingleton<CreateViewModel>();
-        services.AddSingleton<ContentControl>();
+        services.AddTransient<CreateViewModel>();
+        services.AddTransient<CreateView>();
 
-        services.AddSingleton<EditViewModel>();
-        services.AddSingleton<EditView>();
+        services.AddTransient<EditViewModel>();
+        services.AddTransient<EditView>();
+
+        services.AddTransient<AddUserWindowViewModel>();
+        services.AddTransient<AddUserWindow>();
 
     }
 

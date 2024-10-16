@@ -8,11 +8,15 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewmodels:CreateViewModel }">
-        <views: />
+        <views:CreateView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewmodels:EditViewModel }">
         <views:EditView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodels:AddUserWindowViewModel }">
+        <views:AddUserWindow />
     </DataTemplate>
 
 

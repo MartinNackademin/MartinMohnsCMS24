@@ -3,10 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProductCatalogue.Views"
+             xmlns:local="clr-namespace:ProductCatalogue.Views" xmlns:viewmodels="clr-namespace:ProductCatalogue.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EditViewModel}"
              mc:Ignorable="d" 
+             Background="AliceBlue"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Text="Name of the Product" />
+            <TextBox Text="{Binding Product.Name}"/>
+            <TextBlock Text="Price of the Product" />
+            <TextBox Text="{Binding Product.Price}"/>
+            <TextBlock Text="Category of the Product" />
+            <Label  Content="CreateView" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" />
+        </StackPanel>
+
+        <ListView Grid.Row="1" Margin="0,0,0,60" SelectionMode="Single" HorizontalAlignment="Left" Padding="0,0,0,0" 
+              SelectedItem="{Binding Product.Category}">
+            <ListViewItem Content="Games"></ListViewItem>
+            <ListViewItem Content="Pets"></ListViewItem>
+            <ListViewItem Content="Foods"></ListViewItem>
+            <ListViewItem Content="Others"></ListViewItem>
+        </ListView>
+
+        <StackPanel  Grid.Row="2">
+            <Button  Command="{Binding AddCommand}" Padding="10" Margin="3" Content="Add Product" ></Button>
+            <Button Command="{Binding CancelCommand}" Padding="10" Margin="3" Content="Cancel" ></Button>
+        </StackPanel>
+
+
+
     </Grid>
 </UserControl>

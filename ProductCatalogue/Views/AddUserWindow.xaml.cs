@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProductCatalogue.Views
 {
     /// <summary>
-    /// Interaction logic for CreateView.xaml
+    /// Interaction logic for AddUserWindow.xaml
     /// </summary>
-    public partial class CreateView : UserControl
+    public partial class AddUserWindow : Window
     {
-        public CreateView()
+        public AddUserWindow()
         {
             InitializeComponent();
+        }
+
+        public void OpenWindow()
+        {
+            AddUserWindow addUserWindow = new AddUserWindow();
+            ShowDialog();
         }
     }
 }

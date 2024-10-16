@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Shared.Models;
+using SharedLib.Services;
 using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Security.Principal;
@@ -9,12 +10,15 @@ namespace Shared.Services;
 public class ProductService : IProductService
 {
     private List<Product> _products = new List<Product>();
-    private readonly FileService _fileService;
+    private readonly ICategoryService _categoryService;
+    private readonly IFileService _fileService;
 
-    public ProductService(FileService fileService)
+    public Product? currentProduct { get; set; }
+
+    public ProductService(IFileService fileService, ICategoryService categoryService)
     {
         _fileService = fileService;
-
+        _categoryService = categoryService;
     }
 
     public bool AddToList(Product product) // Add product to list , save the changes of the list and return true if success
@@ -34,10 +38,11 @@ public class ProductService : IProductService
             }
             if (duplicateDetected == true) // if duplicate is detected return false not sure i need this?
             {
+                Debug.WriteLine("Duplicate name detected");
                 return false;
             }
-            Debug.WriteLine("Duplicate name detected");
-            _products.Add(product);
+            _categoryService.GiveCategory(product);
+            _products.Add(product); Debug.WriteLine("Product added to real list");
             _fileService.SaveToFile((JsonConvert.SerializeObject(_products)));
             return true;
         }
@@ -59,15 +64,48 @@ public class ProductService : IProductService
         Debug.WriteLine("ProductList was found ");
         List<Product> tempList = JsonConvert.DeserializeObject<List<Product>>(jsonProductList)!;
         _products = tempList;
-        Debug.WriteLine("HEY you just added a product we currently have this many products " + _products.Count);
+        Debug.WriteLine("the current list has this many objects in it " + _products.Count);
         return _products;
 
     }
 
     public void DeleteProduct(Product product) // Delete product from list, save the changes of the list
     {
-        _products.Remove(product);
-//        _fileService.SaveToFile(JsonConvert.SerializeObject(_products));
-        Debug.WriteLine("Product has been deleted");
+        foreach (Product productInList in _products)
+        {
+            if (product.Id == productInList.Id)
+            {
+                currentProduct = productInList;
+                Debug.WriteLine("Product that user wants to  delete has been found" + $"   {productInList.Name}");
+            }
+
+        }
+        _products.Remove(currentProduct!);
+        _fileService.SaveToFile(JsonConvert.SerializeObject(_products));
+
+    }
+
+    public Product Update(Product updatedProduct) // use delete and add to update a product for fun, why are you returning a product?
+    {                                              // you have only completed this section everything else needs to be done, sending in correct info on button press,
+
+        foreach (Product productInList in _products)
+        {
+            if (currentProduct!.Id == productInList.Id)
+            {
+                _products.Remove(productInList);
+               bool success = AddToList(updatedProduct);
+                if (success)
+                {
+                    return updatedProduct;
+                }
+                else 
+                {
+                    _products.Add(productInList);
+                    return updatedProduct;
+                }  
+
+            }
+        }
+        return updatedProduct;
     }
 }

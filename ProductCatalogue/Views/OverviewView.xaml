@@ -20,10 +20,19 @@
         </Grid.RowDefinitions>
 
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,0,0,0">
-            <Button Content="Create" Command="{Binding AddProductCommand}" Margin="5" Click="Button_Click"/>
-            <Button Content="Edit" Command="{Binding EditProductCommand}" Margin="5" />
+            <Button Content="Create" Command="{Binding AddProductCommand}" Margin="5" />
+            <Button Content="Edit" Command="{Binding EditProductCommand}" Margin="5" CommandParameter="{Binding SelectedProduct}" />
             <Button Content="Delete" Command="{Binding DeleteProductCommand}" Margin="5" />
             <Button Content="GÖR EN HANS" Command="{Binding HansCommand}" Margin="330,0,0,0" Padding="5" />
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,60,0,0">
+            <Button Content="Games" CommandParameter="Games" Command="{Binding FilterListCommand}" Margin="5" />
+            <Button Content="Pets" CommandParameter="Pets" Command="{Binding FilterListCommand}" Margin="5" />
+            <Button Content="Foods" CommandParameter="Foods" Command="{Binding FilterListCommand}" Margin="5" />
+            <Button Content="Others" CommandParameter="Others" Command="{Binding FilterListCommand}" Margin="5" />
+            <Button Content="All" CommandParameter="All" Command="{Binding FilterListCommand}" Margin="5" />
+
         </StackPanel>
 
         <ListView Grid.Row="1" ItemsSource="{Binding Productlist}" SelectedItem="{Binding SelectedProduct}" Margin="5" SelectionMode="Single">
@@ -32,12 +41,12 @@
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="100" />
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" Width="100" />
                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" Width="100" />
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="250" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="250" />
                 </GridView>
             </ListView.View>
         </ListView>
 
 
-        <Label  Content="Overview" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" />
+        <Label  Content="Overview" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Margin="20,0,0,0" />
     </Grid>
 </UserControl>

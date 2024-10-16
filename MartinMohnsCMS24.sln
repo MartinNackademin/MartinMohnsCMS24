@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLib", "SharedLib\SharedLib.csproj", "{D0E1CDFA-661C-4A29-96D2-11FF4E50336A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLib", "SharedLib\SharedLib.csproj", "{D0E1CDFA-661C-4A29-96D2-11FF4E50336A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalogue", "ProductCatalogue\ProductCatalogue.csproj", "{15AF4668-8011-44CE-AC6E-32C12A759F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue", "ProductCatalogue\ProductCatalogue.csproj", "{15AF4668-8011-44CE-AC6E-32C12A759F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLib.Tests", "SharedLib.Tests\SharedLib.Tests.csproj", "{311DAFB9-9843-48D9-A1DB-F37812556280}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{15AF4668-8011-44CE-AC6E-32C12A759F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15AF4668-8011-44CE-AC6E-32C12A759F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15AF4668-8011-44CE-AC6E-32C12A759F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{311DAFB9-9843-48D9-A1DB-F37812556280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{311DAFB9-9843-48D9-A1DB-F37812556280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{311DAFB9-9843-48D9-A1DB-F37812556280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{311DAFB9-9843-48D9-A1DB-F37812556280}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
